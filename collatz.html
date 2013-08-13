@@ -83,9 +83,17 @@
 $(function(){
 	$('form').submit( function(e) {		
 		e.preventDefault();
-		var result = getLongestChain( $('input[name="max"]').val() );
-		$('#count h2').text(result.high_score);
-		$('#number h2').text(result.number)
+
+		var max = $('input[name="max"]').val();
+		if (max < 1000001) {
+			var result = getLongestChain( max);
+			$('#count h2').text(result.high_score);
+			$('#number h2').text(result.number)
+		} else {
+			alert('That\s probably gonna take longer than you wanna wait.')
+		}
+		
+		
 	});
 });
 
@@ -115,9 +123,6 @@ function getLongestChain(max) {
 	}
 	return result;
 }
-
-
-
 
 </script>
 </body>
